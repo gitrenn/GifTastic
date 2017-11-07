@@ -18,7 +18,7 @@ $(document).ready(function () {
             method: "GET"
         }).done(function (response) {
             var results = response.data;
-            console.log(results);
+            //console.log(results);
             for (var i = 0; i < results.length; i++) {
                 var $gifDiv = $("<div>").addClass("item");
 
@@ -64,7 +64,7 @@ $(document).ready(function () {
         }
     }
 
-    // create function to implement gif-state switch feature  
+    // create conditions to toggle gif-state between still and animate  
     $(".giphy-view").on("click", ".gif", function () {
         var state = $(this).data("state");
 
@@ -77,5 +77,16 @@ $(document).ready(function () {
             $(this).data("state", "still");
             console.log("Switched state: " + $(this).data("state"));
         }
+    });
+
+    // create function to add new buttons when submit is clicked
+    $("#add-robots").on("click", function(e){
+        e.preventDefault();
+
+        var $robot = $("#giphy-input").val().trim();
+
+        robots.push($robot);
+
+        renderButtons();
     });
 })
