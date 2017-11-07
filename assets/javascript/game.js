@@ -79,14 +79,21 @@ $(document).ready(function () {
         }
     });
 
+   
     // create function to add new buttons when submit is clicked
     $("#add-robots").on("click", function(e){
         e.preventDefault();
 
         var $robot = $("#giphy-input").val().trim();
 
-        robots.push($robot);
-
-        renderButtons();
+        if($robot.length !== 0){
+           
+            robots.push($robot);
+            
+                    renderButtons();
+        }else{
+            alert("Input field is required!");
+        }
+        
     });
 })
